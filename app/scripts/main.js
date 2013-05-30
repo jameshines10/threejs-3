@@ -27,8 +27,14 @@ square.vertices.push(new THREE.Vector3(20, -20, 0));
 
 square.faces.push(new THREE.Face4(0, 1, 2, 3));
 
-var triangleMaterial = new THREE.MeshBasicMaterial({vertexColors: THREE.VertexColors});
-var squareMaterial = new THREE.MeshBasicMaterial({color: 0x7f7fff});
+var triangleMaterial = new THREE.MeshBasicMaterial({
+  vertexColors: THREE.VertexColors,
+  side: THREE.DoubleSide
+  });
+var squareMaterial = new THREE.MeshBasicMaterial({
+  color: 0x7f7fff,
+  side: THREE.DoubleSide
+  });
 
 var triangleMesh = new THREE.Mesh(triangle, triangleMaterial);
 var squareMesh = new THREE.Mesh(square, squareMaterial);
@@ -39,6 +45,15 @@ squareMesh.position.x = 25;
 scene.add(triangleMesh);
 scene.add(squareMesh);
 
-camera.position.z = 50;
+camera.position.z = 70;
 
-renderer.render(scene, camera);
+var render = function () {
+  requestAnimationFrame(render);
+  
+  triangleMesh.rotation.y += 0.03;
+  squareMesh.rotation.x += 0.03;
+  
+  renderer.render(scene, camera);
+};
+
+render();
