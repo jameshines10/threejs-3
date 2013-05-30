@@ -1,4 +1,5 @@
 /*global THREE:false */
+'use strict';
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -28,13 +29,13 @@ square.vertices.push(new THREE.Vector3(20, -20, 0));
 square.faces.push(new THREE.Face4(0, 1, 2, 3));
 
 var triangleMaterial = new THREE.MeshBasicMaterial({
-  vertexColors: THREE.VertexColors,
-  side: THREE.DoubleSide
-  });
+    vertexColors: THREE.VertexColors,
+    side: THREE.DoubleSide
+});
 var squareMaterial = new THREE.MeshBasicMaterial({
-  color: 0x7f7fff,
-  side: THREE.DoubleSide
-  });
+    color: 0x7f7fff,
+    side: THREE.DoubleSide
+});
 
 var triangleMesh = new THREE.Mesh(triangle, triangleMaterial);
 var squareMesh = new THREE.Mesh(square, squareMaterial);
@@ -48,12 +49,12 @@ scene.add(squareMesh);
 camera.position.z = 70;
 
 var render = function () {
-  requestAnimationFrame(render);
+    requestAnimationFrame(render);
   
-  triangleMesh.rotation.y += 0.03;
-  squareMesh.rotation.x += 0.03;
+    triangleMesh.rotation.y += 0.03;
+    squareMesh.rotation.x += 0.03;
   
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
 };
 
 render();
